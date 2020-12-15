@@ -1,8 +1,13 @@
 package com.hongmao.service.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.hongmao.constant.KafkaTopic;
 import com.hongmao.model.UserDTO;
 import com.hongmao.service.UserService;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * @author zhaohaodong
@@ -11,16 +16,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
-    /**
-     * 根据ID查询用户
-     * @param id 用户ID
-     * @return 用户
-     */
+    @Resource
+    private KafkaTemplate<String, String> kafkaTemplate;
+
     @Override
-    public UserDTO findById(Long id) {
-        UserDTO userDTO = new UserDTO();
-        userDTO.setId(101L);
-        userDTO.setUsername("hongmao");
+    public UserDTO insert(UserDTO userDTO) {
+        // 发送消息
+        kafkaTemplate.send(KafkaTopic.KAFKA_TOPIC_USER.name(), JSON.toJSONString(userDTO));
         return userDTO;
     }
 }

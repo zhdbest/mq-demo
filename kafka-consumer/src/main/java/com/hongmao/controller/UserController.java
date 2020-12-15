@@ -2,8 +2,8 @@ package com.hongmao.controller;
 
 import com.hongmao.model.UserDTO;
 import com.hongmao.service.UserService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,7 +11,7 @@ import javax.annotation.Resource;
 
 /**
  * @author zhaohaodong
- * @version 1.0. Added Time:2020/12/14 20:06
+ * @version 1.0. Added Time:2020/12/15 19:14
  */
 @RestController
 @RequestMapping("user")
@@ -21,12 +21,12 @@ public class UserController {
     private UserService userService;
 
     /**
-     * 新增用户
-     * @param userDTO 用户信息
-     * @return 新增的信息
+     * 根据ID查询用户
+     * @param id 用户ID
+     * @return 用户
      */
-    @PostMapping("insert")
-    public UserDTO insert(@RequestBody UserDTO userDTO) {
-        return userService.insert(userDTO);
+    @GetMapping("{id}")
+    public UserDTO user(@PathVariable Long id) {
+        return userService.findById(id);
     }
 }
