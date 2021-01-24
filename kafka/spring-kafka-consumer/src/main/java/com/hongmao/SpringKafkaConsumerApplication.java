@@ -9,9 +9,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @version 1.0. Added Time:2020/12/15 19:16
  */
 @SpringBootApplication
-public class KafkaConsumerApplication {
+public class SpringKafkaConsumerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(KafkaConsumerApplication.class, args);
+        SpringApplication.run(SpringKafkaConsumerApplication.class, args);
     }
 }
