@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Maps;
 import com.hongmao.model.UserDTO;
 import com.hongmao.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -15,6 +16,7 @@ import java.util.Map;
  * @author zhaohaodong
  * @version 1.0. Added Time:2020/12/15 19:15
  */
+@Slf4j
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -40,6 +42,7 @@ public class UserServiceImpl implements UserService {
         if (userDTO == null || userDTO.getId() == null) {
             return;
         }
+        log.info(message);
         userMap.put(userDTO.getId(), userDTO);
     }
 }
