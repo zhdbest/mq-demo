@@ -12,5 +12,9 @@ public enum KafkaTopic {
      */
     KAFKA_TOPIC_USER,
 
+    /**
+     * 测试日志
+     */
+    KAFKA_TOPIC_TEST_LOG,
     ;
 }

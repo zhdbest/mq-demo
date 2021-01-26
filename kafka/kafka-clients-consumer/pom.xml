@@ -11,4 +11,10 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>kafka-clients-consumer</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+        </dependency>
+    </dependencies>
 </project>
