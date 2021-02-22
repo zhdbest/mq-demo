@@ -3,6 +3,7 @@ package com.hongmao.consumer;
 import com.google.common.collect.Lists;
 import com.hongmao.constant.KafkaTopic;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
@@ -22,10 +23,14 @@ public class LogConsumer {
 
     public static void main(String[] args) {
         Properties properties = new Properties();
-        properties.put("bootstrap.servers", "localhost:9092");
-        properties.put("group.id", "log-group");
-        properties.put("key.deserializer", StringDeserializer.class);
-        properties.put("value.deserializer", StringDeserializer.class);
+        // bootstrap.servers
+        properties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        // group.id
+        properties.put(ConsumerConfig.GROUP_ID_CONFIG, "log-group");
+        // key.deserializer
+        properties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        // value.deserializer
+        properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         KafkaConsumer<String, String> kafkaConsumer = new KafkaConsumer<>(properties);
         kafkaConsumer.subscribe(Lists.newArrayList(KafkaTopic.KAFKA_TOPIC_TEST_LOG.name()));
 

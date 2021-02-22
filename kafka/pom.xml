@@ -17,6 +17,7 @@
         <module>kafka-clients-consumer</module>
         <module>spring-kafka-producer</module>
         <module>spring-kafka-consumer</module>
+        <module>kafka-clients-admin</module>
     </modules>
 
     <dependencies>
@@ -24,6 +25,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
         <!-- common模块 -->
         <dependency>
